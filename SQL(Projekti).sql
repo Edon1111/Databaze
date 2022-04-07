@@ -846,3 +846,52 @@ insert into Job_Title(Job_title_id,Stafi_id,job_title_desc) values(24,24,'Asiste
 insert into Job_Title(Job_title_id,Stafi_id,job_title_desc) values(25,25,'Instruktor')
 
 select * from Job_Title
+
+
+
+-- 	Përditësimin e 20 objekteve duke përdorur kushtet të caktuara.
+
+--updates
+
+Select* from Klienti
+
+update Klienti 
+set emri = 'Edonii'
+from Klienti k
+where k.Klienti_id=2
+
+select * from Klienti
+
+
+select * from Stafi
+update Stafi 
+set eshte_aktiv='P'
+where eshte_aktiv='Y'
+
+
+select * from Job_Title
+
+update Job_Title 
+set job_title_desc='Drejtor'
+where Job_title_id < 5
+
+select * from Zenia_Automjetit
+update Zenia_Automjetit
+set eshte_aktiv = 'N'
+where dataFillimit_zenies='2022-04-07' and dataMbarimit_zenies='2022-08-12'
+
+select * from Rezervimi
+update Rezervimi
+set data_krijuar = '2022-08-4'
+where Rezervimi_id > 8
+
+
+select * from Kerkesa
+
+alter table Kerkesa alter column data_krijuar varchar(255) null
+update Kerkesa
+set data_krijuar = null
+where Kerkesa_id <= 3
+
+
+--Fshierja e 10 objekteve
