@@ -893,5 +893,126 @@ update Kerkesa
 set data_krijuar = null
 where Kerkesa_id <= 3
 
+select * from Faturimi
+update Faturimi 
+set kostoja_fillestare = kostoja_fillestare+(kostoja_fillestare* 0.5)
+from Faturimi f, Rezervimi r
+where f.Faturimi_id = r.Rezervimi_id
+
+select * from Pagesa
+update Pagesa
+set lloji_pageses = 'Total'
+where lloji_pageses='Cash'
+
+
+select * from Sherbimi
+update Sherbimi 
+set kostoja=kostoja + kostoja
+
+select * from Automjeti
+update Automjeti 
+set modeli_automjetit = 'Model udhetues' 
+where modeli_automjetit ='Bus'
+
+select* from Automjeti 
+update Automjeti set modeli_automjetit = 'Model transportues'
+where modeli_automjetit= 'Kamion'
+
+
+select * from License_type
+update License_type 
+set license_type_desc = 'Certifikate e lindjes'
+where License_id >= 21
+
+select * from Kerkesa 
+update Kerkesa 
+set data_krijuar = null
+where Kerkesa_id > 15
+
+
+select * from Zenia_Automjetit
+update Zenia_Automjetit 
+set eshte_aktiv = 'Y'
+where zenia_automjetit_id = 21 or zenia_automjetit_id = 25
+
+
+select * from Zenia_Stafit 
+update Zenia_Stafit 
+set eshte_aktiv = 'N'
+where dataMbarimit_zenies ='2022-08-12'
+
+select * from Ligjerata 
+update Ligjerata set kostoja = kostoja + (kostoja * 0.2) 
+where ligjerata_titulli = 'Praktika ne vozitje' 
+
+select * from Ligjerata 
+update Ligjerata set kohezgjatja = '120min'
+where kostoja = 24
+
+
+select * from Statusi_Faturimit 
+update Statusi_Faturimit 
+set statusi_fatures_desc = 'cancel'
+ where Statusi_faturimit_id > 12 and Statusi_faturimit_id < 25
+
+
+ select * from Statusi_Kerkesa
+ update Statusi_Kerkesa 
+ set statusi_kerkesa_desc = 'complete'
+ where eshte_aktiv = 'Y'
+
+ select * from Statusi_Rezervimit 
+ update Statusi_Rezervimit 
+ set statusi_rezervimit_desc= 'in-procces' 
+ where eshte_aktiv = 'N'
+
+
 
 --Fshierja e 10 objekteve
+
+
+
+
+delete from Ligjerata where kostoja <24
+
+
+delete from Adresa where shteti like 'Germany'
+
+delete from Klienti where email = 'edon@gmail.com'
+
+delete from Klienti where eshte_aktiv = 'N' and fix_nr is not null
+
+
+delete from Stafi where Adresa_id > 5 and Adresa_id < 15
+
+delete from Rezervimi where data_krijuar is null
+
+
+delete from License_type where license_type_desc = 'Certifikate e lindjes'
+
+delete from Kerkesa where Kerkesa_id = 12
+
+
+delete from Sherbimi where kostoja < 60
+
+delete from Zenia_Stafit where eshte_aktiv = 'N'
+
+
+
+-- Te krijoni min 5 query te thjeshta, te rezliohen vetem me nje relacion tabele
+
+select s.emri  from Stafi s where s.emri = 'Jaydon'
+
+-- Te selektohet stafi i cili eshte aktiv
+select s.emri, s.mbiemri  from Stafi s where eshte_aktiv = 'P'
+
+select  a.prodhuesi_automjetit from Automjeti a where a.prodhuesi_automjetit = 'Mercedes'
+group by a.prodhuesi_automjetit
+
+select * from Sherbimi sh where sh.sherbimi_desc = ''
+
+select AVG(l.kostoja)  from Ligjerata l 
+ 
+
+
+ --	Të krijoni min. 5 query të thjeshta, të realizohen në minimum dy relacione (tabela) e më tepër. 
