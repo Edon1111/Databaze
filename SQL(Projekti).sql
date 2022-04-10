@@ -1016,3 +1016,31 @@ select AVG(l.kostoja)  from Ligjerata l
 
 
  --	Të krijoni min. 5 query të thjeshta, të realizohen në minimum dy relacione (tabela) e më tepër. 
+
+
+ select k.emri, k.mbiemri, k.email, ker.data_krijuar from Klienti k, Kerkesa ker
+ where k.Klienti_id = ker.Klienti_id and k.emri like '%E'
+
+
+ select * from Lloji_Automjetit ll, Automjeti a
+ where ll.Automjeti_id = a.Automjeti_Id and ll.lloji_automjetit_desc ='Veture'
+
+
+ select r.planifikimi_dates_ligjerates, k.Klienti_id , kl.eshte_aktiv from Rezervimi r, Kerkesa k, Klienti kl
+ where r.Kerkesa_id = k.Kerkesa_id and k.Klienti_id = kl.Klienti_id
+ and kl.eshte_aktiv = 'N'
+
+
+ select * from Ligjerata l , Sherbimi sh
+ where l.Ligjerata_id = sh.Sherbimi_id and l.kostoja > 20 and sh.sherbimi_desc != ''
+
+ select s.emri as 'Emri Instruktorit', s.mbiemri as 'Mbiemri i Instruktorit' , a.qyteti, k.emri as 'Emri i Klientit', k.mbiemri as 'Mbiemri i klientit', j.job_title_desc, s.eshte_aktiv  from Stafi s, Adresa a, Klienti k , Job_Title j 
+ where s.Stafi_id = j.Stafi_id  and a.Adresa_id = s.Adresa_id and k.Adresa_id = a.Adresa_id
+ and a.qyteti = 'Berlin' and j.job_title_desc ='Instruktor' 
+
+ 
+
+ ---- Krijimi i 5 query të avancuara, të realizuara në minimum dy relacione (tabela) e më tepër
+
+select concat(k.emri,'',k.mbiemri)as Emri_Mbiemri , ker.Kerkesa_id, ker.data_krijuar from Klienti k right join Kerkesa ker on k.Klienti_id = ker.Klienti_id
+where  k.eshte_aktiv like 'Y'
